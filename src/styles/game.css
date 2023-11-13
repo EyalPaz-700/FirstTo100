@@ -1,0 +1,15 @@
+.game-container {
+    display: flex;
+    width : 70vw;
+    height: 70vh;
+    border: 1px solid black;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-card{
+    width : 30%;
+    height: 80%;
+    border: 1px solid black;
+}

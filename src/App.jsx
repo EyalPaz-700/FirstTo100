@@ -4,22 +4,19 @@ import GameFooter from "./components/GameFooter";
 import "./App.css";
 
 function App() {
-  const [players, setPlayers] = useState([
-    {
-      name: "eyal",
-    },
-    {
-      name: "shlomo",
-    },
-    {
-      name: "paz",
-    },
-  ]);
 
   function removePlayer(name) {
     setPlayers((prev) => {
       return prev.filter((el) => el.name !== name);
     });
+  }
+  const [players, setPlayers] = useState([/*localstorage*/]);
+  /////
+  function startGame() {}//!!
+  /////
+  function addNewPlayer(name) {
+    const newUser = {name, averageScore:0, gameCount:0};
+    setPlayers([...players, newUser]);
   }
   return (
     <>

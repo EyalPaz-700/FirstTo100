@@ -4,19 +4,25 @@ import GameFooter from "./components/GameFooter";
 import "./App.css";
 
 function App() {
-  const [users, setUsers] = useState([/*localstorage*/]);
+
+  function removePlayer(name) {
+    setPlayers((prev) => {
+      return prev.filter((el) => el.name !== name);
+    });
+  }
+  const [players, setPlayers] = useState([/*localstorage*/]);
   /////
   function startGame() {}//!!
   /////
   function addNewPlayer(name) {
     const newUser = {name, averageScore:0, gameCount:0};
-    setUsers([...users, newUser]);
+    setPlayers([...players, newUser]);
   }
   return (
     <>
       <h1> First To 100 </h1>
-      <Game />
-      <GameFooter addNewPlayer={addNewPlayer} startGame={startGame} />
+      <Game removeUser={removePlayer} players={players} />
+      <GameFooter />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Game from "./components/Game";
 import GameFooter from "./components/GameFooter";
 import "./App.css";
@@ -21,8 +21,10 @@ function App() {
     });
   }
   function addNewPlayer(name) {
-    const newUser = { name, averageScore: 0, gameCount: 0, didWin: false };
-    setPlayers([...players, newUser]);
+    if (players.filter((el) => el.name === name).length === 0) {
+      const newUser = { name, averageScore: 0, gameCount: 0, didWin: false };
+      setPlayers([...players, newUser]);
+    }
   }
 
   function changeWinStatus(userName) {

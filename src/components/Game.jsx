@@ -55,7 +55,7 @@ export default function Game({
               currentTurn={currentTurn}
               name={player.name}
               myIndex={index}
-              key={index}
+              key={player.name}
               winStatus={player.didWin}
               gameStatus={gameStatus}
             />

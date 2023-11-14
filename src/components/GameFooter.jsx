@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import AddUser from "./AddUser";
 
-export default function GameFooter({ startGame, addNewPlayer }) {
+export default function GameFooter({
+  toogleGameMode,
+  gameStatus,
+  addNewPlayer,
+}) {
   const [onDisplay, setOnDisplay] = useState(false);
   function closeDisplay() {
     setOnDisplay(false);
@@ -15,8 +19,15 @@ export default function GameFooter({ startGame, addNewPlayer }) {
       >
         new player
       </button>
-      <button onClick={startGame}>start game</button>
-      <AddUser closeDisplay={closeDisplay} addNewPlayer={addNewPlayer} onDisplay={onDisplay}></AddUser>
+      <button onClick={toogleGameMode}>
+        {" "}
+        {gameStatus ? "end Game" : "start game"}
+      </button>
+      <AddUser
+        closeDisplay={closeDisplay}
+        addNewPlayer={addNewPlayer}
+        onDisplay={onDisplay}
+      ></AddUser>
     </div>
   );
 }

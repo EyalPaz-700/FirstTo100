@@ -1,15 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/game.css";
 import GameCard from "./GameCard";
-export default function Game({ players, removeUser }) {
+export default function Game({
+  gameStatus,
+  players,
+  removeUser,
+  addFinishedUser,
+}) {
   const [currentTurn, setCurrentTurn] = useState(0);
   function changeTurn() {
-    if (currentTurn >= players.length - 1) {
-      setCurrentTurn(0);
+    if (!checkGameEnd()) {
+      setCurrentTurn(checkNextPlayer(currentTurn + 1));
     } else {
-      setCurrentTurn((prev) => prev + 1);
+      debugger;
+      console.log("Game Ended");
     }
   }
+
+  function checkGameEnd() {
+    return players.filter((el) => !el.didWin).length === 0;
+  }
+
+  function checkNextPlayer(counter) {
+    if (counter > players.length - 1) {
+      return checkNextPlayer(0);
+    } else if (!players[counter].didWin) {
+      return counter;
+    }
+    return checkNextPlayer(counter + 1);
+  }
+
   return (
     <div className="game-container">
       {currentTurn}
@@ -23,10 +43,13 @@ export default function Game({ players, removeUser }) {
               removeUser(player.name);
             }}
             changeTurn={changeTurn}
+            userFinished={() => addFinishedUser(player.name)}
             currentTurn={currentTurn}
             name={player.name}
             myIndex={index}
             key={index}
+            winStatus={player.didWin}
+            gameStatus={gameStatus}
           />
         );
       })}

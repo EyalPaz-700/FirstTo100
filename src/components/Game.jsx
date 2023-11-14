@@ -51,7 +51,7 @@ export default function Game({
                 removeUser(player.name);
               }}
               changeTurn={changeTurn}
-              userFinished={() => addFinishedUser(player.name)}
+              userFinished={(moves) => addFinishedUser(player.name, moves)}
               currentTurn={currentTurn}
               name={player.name}
               myIndex={index}

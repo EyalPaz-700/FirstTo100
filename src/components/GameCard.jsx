@@ -21,7 +21,7 @@ export default function GameCard({
   }
 
   if (gameEnd && !winStatus) {
-    userFinished();
+    userFinished(moves);
   }
 
   let cardBody = <> </>;

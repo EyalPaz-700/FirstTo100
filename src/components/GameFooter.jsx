@@ -5,17 +5,22 @@ export default function GameFooter({
   toogleGameMode,
   gameStatus,
   addNewPlayer,
+  changePlayersStatus,
+  players,
+  
 }) {
   const [onDisplay, setOnDisplay] = useState(false);
   function closeDisplay() {
     setOnDisplay(false);
   }
+  const addPlayer = () => {
+    setOnDisplay(true);
+  }
+  
   return (
     <div className="game-footer">
       <button
-        onClick={() => {
-          setOnDisplay(true);
-        }}
+        onClick={addPlayer}
       >
         New Player
       </button>

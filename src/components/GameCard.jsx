@@ -22,7 +22,6 @@ export default function GameCard({
 
   if (gameEnd && !winStatus) {
     userFinished(moves);
-    changeTurn();
   }
 
   let cardBody = <> </>;
@@ -71,9 +70,9 @@ export default function GameCard({
   return (
     <div className="game-card">
       <h4> {name}</h4>
-      <h5> {score} </h5>
-      <h6> {moves} </h6>
-      {cardBody}
+      <h5> Score : {score} </h5>
+      <h6> Move Counter : {moves} </h6>
+      <div id="buttons-container">{cardBody} </div>
     </div>
   );
 }

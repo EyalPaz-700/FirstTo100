@@ -12,7 +12,6 @@ export default function Game({
     if (!checkGameEnd()) {
       setCurrentTurn(checkNextPlayer(currentTurn + 1));
     } else {
-      debugger;
       console.log("Game Ended");
     }
   }
@@ -22,6 +21,7 @@ export default function Game({
   }
 
   function checkNextPlayer(counter) {
+    debugger;
     if (counter > players.length - 1) {
       return checkNextPlayer(0);
     } else if (!players[counter].didWin) {
@@ -31,28 +31,35 @@ export default function Game({
   }
 
   return (
-    <div className="game-container">
-      {currentTurn}
-      {players.map((player, index) => {
-        return (
-          <GameCard
-            removeUser={() => {
-              if (currentTurn > index) {
-                setCurrentTurn((prev) => prev - 1);
-              }
-              removeUser(player.name);
-            }}
-            changeTurn={changeTurn}
-            userFinished={(moves) => addFinishedUser(player.name, moves)}
-            currentTurn={currentTurn}
-            name={player.name}
-            myIndex={index}
-            key={index}
-            winStatus={player.didWin}
-            gameStatus={gameStatus}
-          />
-        );
-      })}
-    </div>
+    <>
+      <h2>
+        {" "}
+        {gameStatus && players.length
+          ? `Player ${currentTurn + 1}'s Turn`
+          : ""}{" "}
+      </h2>
+      <div className="game-container">
+        {players.map((player, index) => {
+          return (
+            <GameCard
+              removeUser={() => {
+                if (currentTurn > index) {
+                  setCurrentTurn((prev) => prev - 1);
+                }
+                removeUser(player.name);
+              }}
+              changeTurn={changeTurn}
+              userFinished={(moves) => addFinishedUser(player.name, moves)}
+              currentTurn={currentTurn}
+              name={player.name}
+              myIndex={index}
+              key={index}
+              winStatus={player.didWin}
+              gameStatus={gameStatus}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }

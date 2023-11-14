@@ -17,7 +17,7 @@ export default function AddUser({ addNewPlayer, onDisplay, closeDisplay }) {
           &times;
         </span>
         <h2>add a new user:</h2>
-        <label htmlFor="username">username:</label>
+        <label htmlFor="username">Username:</label>
         <input
           onChange={(e) => {
             setNewUserName(e.target.value);
@@ -26,7 +26,7 @@ export default function AddUser({ addNewPlayer, onDisplay, closeDisplay }) {
           name="username"
           type="text"
         />
-        <input className="add-user-button" type="submit" value="add!" />
+        <input className="add-user-button" type="submit" value="Add" />
       </form>
     </div>
   );

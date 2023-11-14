@@ -21,8 +21,14 @@ function App() {
     changePlayersStatus(JSON.parse(localStorage.getItem("players"))) || []
   );
   const [gameStatus, setGameStatus] = useState(false);
+
   function toogleGameMode() {
-    setGameStatus((prev) => !prev);
+    setGameStatus((prev) => {
+      if (prev) {
+        setPlayers([]);
+      }
+      return !prev;
+    });
   }
   function addNewPlayer(name) {
     const newUser = { name, averageScore: 0, gameCount: 0, didWin: false };
@@ -61,7 +67,7 @@ function App() {
   }
   return (
     <>
-      <h1> First To 100 </h1>
+      <h1 id="game-header"> First To 100 </h1>
       <Game
         removeUser={removePlayer}
         players={players}

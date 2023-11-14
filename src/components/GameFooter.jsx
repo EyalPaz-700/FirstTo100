@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AddUser from "./AddUser";
-
+import "../styles/footer.css";
 export default function GameFooter({
   toogleGameMode,
   gameStatus,
@@ -17,11 +17,11 @@ export default function GameFooter({
           setOnDisplay(true);
         }}
       >
-        new player
+        New Player
       </button>
       <button onClick={toogleGameMode}>
         {" "}
-        {gameStatus ? "end Game" : "start game"}
+        {gameStatus ? "End Game" : "Start Game"}
       </button>
       <AddUser
         closeDisplay={closeDisplay}

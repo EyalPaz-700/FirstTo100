@@ -21,7 +21,6 @@ export default function Game({
   }
 
   function checkNextPlayer(counter) {
-    debugger;
     if (counter > players.length - 1) {
       return checkNextPlayer(0);
     } else if (!players[counter].didWin) {
@@ -33,10 +32,13 @@ export default function Game({
   return (
     <>
       <h2>
-        {" "}
-        {gameStatus && players.length
-          ? `Player ${currentTurn + 1}'s Turn`
-          : ""}{" "}
+        {!checkGameEnd()
+          ? gameStatus && players.length
+            ? `Player ${currentTurn + 1}'s Turn`
+            : ""
+          : players.length
+          ? "Game Ended"
+          : ""}
       </h2>
       <div className="game-container">
         {players.map((player, index) => {
@@ -53,7 +55,7 @@ export default function Game({
               currentTurn={currentTurn}
               name={player.name}
               myIndex={index}
-              key={index}
+              key={player.name}
               winStatus={player.didWin}
               gameStatus={gameStatus}
             />

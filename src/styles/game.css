@@ -1,8 +1,21 @@
+* {
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Assistant', sans-serif;;
+  }
+
+  h2 {
+    text-align: center;
+    min-height: 7vh;
+    font-size: 1rem;
+  }
 .game-container {
     display: flex;
     width : 70vw;
     height: 70vh;
-    border: 1px solid black;
+    border: 5px solid black;
+    border-radius: 10px;
     margin: 0 auto;
     justify-content: space-around;
     align-items: center;
@@ -11,5 +24,29 @@
 .game-card{
     width : 30%;
     height: 80%;
-    border: 1px solid black;
+    border: 3px solid black;
+    border-radius: 4px;
+    text-align: center;
 }
+
+.operators{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 40%;
+    row-gap: 10px;
+    margin-top: 50px;
+  }
+
+#buttons-container > button {
+    width: 60%;
+    margin-top: 50px;
+}
+  h4, h5, h6 {
+    margin-top: 10px;
+  }
+
+  .operators button{
+    flex-basis: 40%;
+  }
+  

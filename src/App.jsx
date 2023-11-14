@@ -59,26 +59,28 @@ function App() {
     });
   }
   function addNewPlayer(name) {
-    const newUser = { name, averageScore: 0, gameCount: 0, didWin: false };
-    const newGamePlayers = [...players, newUser];
-    const oldPlayers = changePlayersStatus(
-      JSON.parse(localStorage.getItem("players")) || []
-    );
-
-    let playerFound = false;
-    const allPlayers = oldPlayers.forEach((element) => {
-      if (element.name === newGamePlayers[newGamePlayers.length - 1].name) {
-        playerFound = true;
-        newGamePlayers[newGamePlayers.length - 1].averageScore =
-          element.averageScore;
-        newGamePlayers[newGamePlayers.length - 1].gameCount = element.gameCount;
+    if (players.filter((el) => el.name === name).length === 0) {
+      const newUser = { name, averageScore: 0, gameCount: 0, didWin: false };
+      const newGamePlayers = [...players, newUser];
+      const oldPlayers = changePlayersStatus(
+        JSON.parse(localStorage.getItem("players")) || []
+      );
+      let playerFound = false;
+      const allPlayers = oldPlayers.forEach((element) => {
+        if (element.name === newGamePlayers[newGamePlayers.length - 1].name) {
+          playerFound = true;
+          newGamePlayers[newGamePlayers.length - 1].averageScore =
+            element.averageScore;
+          newGamePlayers[newGamePlayers.length - 1].gameCount =
+            element.gameCount;
+        }
+      });
+      if (!playerFound) {
+        oldPlayers.push(newUser);
       }
-    });
-    if (!playerFound) {
-      oldPlayers.push(newUser);
+      setPlayers(allPlayers || newGamePlayers);
+      localStorage.setItem("players", JSON.stringify(oldPlayers));
     }
-    setPlayers(allPlayers || newGamePlayers);
-    localStorage.setItem("players", JSON.stringify(oldPlayers));
   }
 
   function changeWinStatus(userName, score) {

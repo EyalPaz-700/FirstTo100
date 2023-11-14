@@ -10,6 +10,8 @@ export default function GameCard({
   userFinished,
   winStatus,
   gameStatus,
+  avgScore,
+  gameCount,
 }) {
   const [score, setScore] = useState(parseInt(Math.random() * 100));
   const [moves, setMoves] = useState(0);
@@ -72,6 +74,8 @@ export default function GameCard({
       <h4> {name}</h4>
       <h5> Score : {score} </h5>
       <h6> Move Counter : {moves} </h6>
+      <h6> Average Score : {avgScore} </h6>
+      <h6> Game Count: {gameCount} </h6>
       <div id="buttons-container">{cardBody} </div>
     </div>
   );

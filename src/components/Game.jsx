@@ -58,6 +58,8 @@ export default function Game({
               key={player.name}
               winStatus={player.didWin}
               gameStatus={gameStatus}
+              avgScore={player.averageScore}
+              gameCount={player.gameCount}
             />
           );
         })}
